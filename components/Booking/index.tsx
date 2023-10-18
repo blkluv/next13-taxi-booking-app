@@ -1,4 +1,4 @@
-'use client'
+'use client';
 ;import AutoComplete from './AutoComplete'
 
 const Booking = () => {
