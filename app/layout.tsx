@@ -1,8 +1,10 @@
+
 import type { Metadata } from 'next'
 import { ClerkProvider } from '@clerk/nextjs'
 import { Outfit } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components'
+import { useEffect, useState } from 'react'
 
 const outfit = Outfit({ subsets: ['latin'] })
 
@@ -17,6 +19,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
   return (
   <ClerkProvider>
     <html lang="en">
