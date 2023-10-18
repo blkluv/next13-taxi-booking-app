@@ -3,7 +3,14 @@ import Image from 'next/image'
 export default function Home() {
   return (
     <div className="">
-      <h2 className=" text-center text-4xl font-bold mt-4">Next 13.5 Taxi Booking app</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3">
+        <div className="bg-blue-100">
+          Booking
+        </div>
+        <div className="col-span-2 bg-red-400">
+          Map
+        </div>
+      </div>
 
     </div>
   )
