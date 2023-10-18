@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
   <ClerkProvider>
     <html lang="en">
-      <body className={outfit.className}>
+      <body className={`${outfit.className} bg-gray-200`}>
         <Navbar />
         {children}
       </body>

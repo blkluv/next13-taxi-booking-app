@@ -33,7 +33,7 @@ const AutoCompleteAddress = () => {
     return (
         <div className="mt-5">
             <div className="relative">
-                <label htmlFor="" className="text-gray-400">From:</label>
+                <label htmlFor="" className="text-gray-800">From:</label>
                 <input 
                     type="text" 
                     className=' bg-white p-1 border-[1px] w-full rounded-md outline-none focus:border-yellow-600' 
@@ -57,7 +57,7 @@ const AutoCompleteAddress = () => {
                 }
             </div>
             <div className="mt-3">
-                <label htmlFor="" className="text-gray-400">To:</label>
+                <label htmlFor="" className="text-gray-800">To:</label>
                 <input 
                     type="text" 
                     className=' bg-white p-1 border-[1px] w-full rounded-md outline-none focus:border-yellow-600' 

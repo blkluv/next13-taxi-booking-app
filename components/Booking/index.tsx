@@ -6,7 +6,7 @@ import Cars from './Cars';
 const Booking = () => {
   const screenHeight = window.innerHeight*0.72;
   return (
-    <div className='p-5 mb-4'>
+    <div className='p-5 mb-4 bg-stone-300'>
       <h2 className="text-[20px] font-semibold">Booking</h2>
       <div className="border-[1px] p-5 rounded-md mt-4" style={{ height: screenHeight }}>
         <AutoComplete />

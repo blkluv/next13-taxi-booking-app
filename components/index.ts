@@ -1,5 +1,5 @@
 import Navbar from './Navbar'
 import Booking from './Booking'
-import Map from './Map'
+import MapBoxMap from './Map/MapBoxMap'
 
-export { Navbar, Booking, Map };
+export { Navbar, Booking, MapBoxMap };
