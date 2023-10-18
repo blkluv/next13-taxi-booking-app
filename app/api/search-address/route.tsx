@@ -2,10 +2,7 @@ import { NextResponse } from "next/server";
 
 const { uuid } = require('uuidv4');
 
-
 const session_token = uuid();
-console.log(session_token);
-
 
 const BASE_URL = 'https://api.mapbox.com/search/searchbox/v1/suggest';
 

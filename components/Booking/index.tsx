@@ -1,5 +1,5 @@
 'use client';
-;import AutoComplete from './AutoComplete'
+;import AutoComplete from './AutoCompleteAddress'
 
 const Booking = () => {
   const screenHeight = window.innerHeight*0.72;
