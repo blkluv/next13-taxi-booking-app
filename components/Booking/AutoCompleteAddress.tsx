@@ -100,7 +100,7 @@ function AutoCompleteAddress() {
                                     className="p-3 hover:bg-gray-100 cursor-pointer" 
                                     key={index}
                                     // setSource to set the selected address as the source | setAddressList to clear the address list
-                                    onClick={() => { onSourceAddressSelection(item); }}
+                                    onClick={() => onSourceAddressSelection(item)}
                                 >{item.full_address}</h2>
                             )
                         })}
@@ -125,7 +125,7 @@ function AutoCompleteAddress() {
                                 className="p-3 hover:bg-gray-100 cursor-pointer" 
                                 key={index}
                                 // setDestination to set the selected address as the source | setAddressList to clear the address list
-                                onClick={() => { setDestination(item.full_address); setAddressList([]); setDestinationChange(false); }}
+                                onClick={() => onDestinationAddressSelection(item)}
                             >{item.full_address}</h2>
                         ))}
                     </div>

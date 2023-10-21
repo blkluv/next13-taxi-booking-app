@@ -1,14 +1,19 @@
+import { DirectionDataContext } from '@/Context/DirectionDataContext';
 import CarList from '@/data/CarList';
 import Image from 'next/image';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 const Cars = () => {
 
-    function calc(price: number) {
-        return Math.round((price + Number.EPSILON) * 100) / 100;
-    }
+    const { directionData, setDirectionData } = useContext<any>(DirectionDataContext);
 
     const [selectedCar, setSelectedCar] = useState<any>();
+
+    const getCost = (charges: any) => {
+        return(
+            charges*directionData.routes[0].distance*0.000621371192 // convert meters to miles
+        ).toFixed(2); // roundup the distance value to 2 decimal places
+    };
 
     return (
         <div className="mt-3">
@@ -29,7 +34,12 @@ const Cars = () => {
                         />
                         <div className="flex justify-between">
                             <h2 className="text-gray-800">{car.name}</h2>
-                            <span className="text-black font-bold">{calc(car.price*4.6)} $</span>
+                            {directionData?.routes ? 
+                                <span className="text-black font-bold">
+                                    {getCost(car.price)}$
+                                </span>
+                                : null
+                            }
                         </div>
                     </div>
                 ))}
