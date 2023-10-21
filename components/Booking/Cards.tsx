@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import CardsList from './CardsList'
+import CardsList from '../../data/CardsList'
 import Image from 'next/image'
 
 const Cards = () => {
