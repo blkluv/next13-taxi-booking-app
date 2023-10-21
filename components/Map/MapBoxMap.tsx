@@ -11,6 +11,7 @@ import { SourceCoordinatesContext } from '@/Context/SourceCoordinatesContext';
 import { DestinationCoordinatesContext } from '@/Context/DestinationCoordinatesContext';
 import { DirectionDataContext } from '@/Context/DirectionDataContext';
 import MapBoxRoute from './MapBoxRoute';
+import DistanceTime from './DistanceTime';
 
 const session_token = uuidv4();
 const MAPBOX_DRIVING_ENDPOINT = 'https://api.mapbox.com/directions/v5/mapbox/driving/';
@@ -93,6 +94,9 @@ const MapBoxMap = () => {
           ):null}
         </Map>
         : null}
+      </div>
+      <div className="absolute bottom-[40px] z-20 right-[20px] hidden md:block">
+        <DistanceTime />
       </div>
     </div>
   )
