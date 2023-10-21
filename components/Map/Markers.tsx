@@ -1,6 +1,6 @@
 import { DestinationCoordinatesContext } from '@/Context/DestinationCoordinatesContext';
 import { SourceCoordinatesContext } from '@/Context/SourceCoordinatesContext';
-import { UserLocationContext } from '@/context/UserLocationContext';
+import { UserLocationContext } from '@/Context/UserLocationContext';
 import React, { useContext } from 'react'
 import { Map, Marker } from 'react-map-gl'
 

@@ -1,12 +1,19 @@
 "use client";
-import { UserLocationContext } from '@/context/UserLocationContext';
+import { UserLocationContext } from '@/Context/UserLocationContext';
 import React, { useContext, useEffect, useRef } from 'react'
 import { Map, Marker } from 'react-map-gl';
+const { v4: uuidv4 } = require('uuid')
+
 // Styling for the marker
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Markers from './Markers';
 import { SourceCoordinatesContext } from '@/Context/SourceCoordinatesContext';
 import { DestinationCoordinatesContext } from '@/Context/DestinationCoordinatesContext';
+import { DirectionDataContext } from '@/Context/DirectionDataContext';
+import MapBoxRoute from './MapBoxRoute';
+
+const session_token = uuidv4();
+const MAPBOX_DRIVING_ENDPOINT = 'https://api.mapbox.com/directions/v5/mapbox/driving/';
 
 const MapBoxMap = () => {
 
@@ -16,6 +23,7 @@ const MapBoxMap = () => {
   const { userLocation, setUserLocation } = useContext(UserLocationContext);
   const { sourceCoordinates, setSourceCoordinates } = useContext<any>(SourceCoordinatesContext);
   const { destinationCoordinates, setDestinationCoordinates } = useContext<any>(DestinationCoordinatesContext);
+  const { directionData, setDirectionData } = useContext<any>(DirectionDataContext);
 
   //Fly over to the Source or Destination coordinates when they are selected from the address suggestion dropdown
   useEffect(() => {
@@ -40,7 +48,27 @@ const MapBoxMap = () => {
         duration: 2500
       });
     }
+
+    if(sourceCoordinates && destinationCoordinates){
+      getDirectionRoutes();
+    }
   },[destinationCoordinates]);
+
+  const getDirectionRoutes = async () => {
+    const res = await fetch(MAPBOX_DRIVING_ENDPOINT+
+      sourceCoordinates.lng+','+sourceCoordinates.lat+';'+
+      destinationCoordinates.lng+','+destinationCoordinates.lat+
+      '?overview=full&geometries=geojson'+
+      '&access_token='+process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+    });
+    const result = await res.json();
+    console.log("Result:\t", result);
+    setDirectionData(result);//.routes[0].geometry.coordinates);
+  };
 
   return (
     <div className="px-5">
@@ -58,6 +86,11 @@ const MapBoxMap = () => {
           mapStyle="mapbox://styles/mapbox/streets-v9"
         >
           <Markers />
+          {directionData?.routes ?(
+            <MapBoxRoute 
+              coordinates={directionData?.routes[0]?.geometry?.coordinates}
+            />
+          ):null}
         </Map>
         : null}
       </div>
